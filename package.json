@@ -8,10 +8,14 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.5.4",
+    "classnames": "^2.2.6",
     "gatsby": "^2.24.41",
     "gatsby-image": "^2.4.15",
     "gatsby-plugin-feed": "^2.5.11",
     "gatsby-plugin-google-analytics": "^2.3.13",
+    "gatsby-plugin-less": "^4.0.3",
     "gatsby-plugin-manifest": "^2.4.22",
     "gatsby-plugin-offline": "^3.2.23",
     "gatsby-plugin-react-helmet": "^3.3.10",
@@ -25,6 +29,7 @@
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-transformer-remark": "^2.8.28",
     "gatsby-transformer-sharp": "^2.5.12",
+    "less": "^3.12.2",
     "prismjs": "^1.21.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -36,11 +41,12 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "gatsby-cli": "^2.12.87",
     "prettier": "2.0.5"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
-    "gatsby"
+    "gatsby antd  blog"
   ],
   "license": "0BSD",
   "main": "n/a",

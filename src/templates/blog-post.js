@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1
             style={{
-              marginTop: rhythm(1),
+              // marginTop: rhythm(1),
               marginBottom: 0,
             }}
           >
@@ -29,9 +29,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </h1>
           <p
             style={{
-              ...scale(-1 / 5),
+              // ...scale(-1 / 5),
               display: `block`,
-              marginBottom: rhythm(1),
+              // marginBottom: rhythm(1),
             }}
           >
             {post.frontmatter.date}
@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
-            marginBottom: rhythm(1),
+            // marginBottom: rhythm(1),
           }}
         />
         <footer>
