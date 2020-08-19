@@ -2,10 +2,10 @@ import { PlusOutlined, HomeOutlined, ContactsOutlined, ClusterOutlined } from '@
 import { Avatar, Card, Col, Divider, Input, Row, Tag } from 'antd';
 import React, { Component, useState, useRef } from 'react';
 import { GridContent } from '@ant-design/pro-layout';
-import { Link } from "gatsby";
+import { Link } from 'gatsby';
 import Articles from '../../components/articles';
-import { list ,currentUserInfo} from './_mock'
-import  './index.less';
+import { list, currentUserInfo } from './_mock';
+import './index.less';
 
 const operationTabList = [
   {
@@ -69,14 +69,14 @@ const TagList = ({ tags }) => {
     }
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleInputConfirm = () => {
     let tempsTags = [...newTags];
 
-    if (inputValue && tempsTags.filter(tag => tag.label === inputValue).length === 0) {
+    if (inputValue && tempsTags.filter((tag) => tag.label === inputValue).length === 0) {
       tempsTags = [
         ...tempsTags,
         {
@@ -94,7 +94,7 @@ const TagList = ({ tags }) => {
   return (
     <div className="tags">
       <div className="tagsTitle">标签</div>
-      {(tags || []).concat(newTags).map(item => (
+      {(tags || []).concat(newTags).map((item) => (
         <Tag key={item.key}>{item.label}</Tag>
       ))}
       {inputVisible && (
@@ -133,10 +133,10 @@ class AccountCenter extends Component {
   input = undefined;
 
   componentDidMount() {
-    console.log('componentDidMount')
+    console.log('componentDidMount');
   }
 
-  onTabChange = key => {
+  onTabChange = (key) => {
     // If you need to sync state to url
     // const { match } = this.props;
     // router.push(`${match.url}/${key}`);
@@ -145,9 +145,9 @@ class AccountCenter extends Component {
     });
   };
 
-  renderChildrenByTabKey = tabKey => {
+  renderChildrenByTabKey = (tabKey) => {
     if (tabKey === 'projects') {
-        return <div>projects</div>;
+      return <div>projects</div>;
     }
 
     if (tabKey === 'applications') {
@@ -155,13 +155,13 @@ class AccountCenter extends Component {
     }
 
     if (tabKey === 'articles') {
-      return <Articles list={list}/>;
+      return <Articles list={list} />;
     }
 
     return null;
   };
 
-  renderUserInfo = currentUser => (
+  renderUserInfo = (currentUser) => (
     <div className="detail">
       <p>
         <ContactsOutlined
@@ -210,7 +210,7 @@ class AccountCenter extends Component {
   render() {
     const { tabKey } = this.state;
     const { currentUserLoading } = this.props;
-    const  currentUser = currentUserInfo
+    const currentUser = currentUserInfo;
     const dataLoading = currentUserLoading || !(currentUser && Object.keys(currentUser).length);
     return (
       <GridContent>
@@ -243,7 +243,7 @@ class AccountCenter extends Component {
                     <div className="teamTitle">团队</div>
                     <Row gutter={36}>
                       {currentUser.notice &&
-                        currentUser.notice.map(item => (
+                        currentUser.notice.map((item) => (
                           <Col key={item.id} lg={24} xl={12}>
                             <Link to={item.href}>
                               <Avatar size="small" src={item.logo} />
@@ -274,4 +274,4 @@ class AccountCenter extends Component {
   }
 }
 
-export default AccountCenter
+export default AccountCenter;

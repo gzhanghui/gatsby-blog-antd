@@ -1,6 +1,6 @@
 import { Avatar } from 'antd';
 import React from 'react';
-import  './index.less';
+import './index.less';
 
 const ArticleListContent = ({ data: { content, updatedAt, avatar, owner, href } }) => (
   <div className="listContent">

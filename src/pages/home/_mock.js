@@ -100,8 +100,8 @@ function getFakeList(req, res) {
   const result = fakeList(count);
   return res.json(result);
 }
-export const list = fakeList(10)
-export const currentUserInfo= {
+export const list = fakeList(10);
+export const currentUserInfo = {
   name: 'Serati Ma',
   avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
   userid: '00000001',
@@ -212,7 +212,7 @@ export const currentUserInfo= {
   },
   address: '西湖区工专路 77 号',
   phone: '0752-268888888',
-}
+};
 
 export default {
   'GET  /api/fake_list': getFakeList,

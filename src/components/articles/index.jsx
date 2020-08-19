@@ -4,7 +4,7 @@ import React from 'react';
 import ArticleListContent from '../articleListContent';
 import styles from './index.less';
 
-const Articles = props => {
+const Articles = (props) => {
   const { list } = props;
 
   const IconText = ({ icon, text }) => (
@@ -20,7 +20,7 @@ const Articles = props => {
       rowKey="id"
       itemLayout="vertical"
       dataSource={list}
-      renderItem={item => (
+      renderItem={(item) => (
         <List.Item
           key={item.id}
           actions={[
@@ -50,4 +50,4 @@ const Articles = props => {
   );
 };
 
-export default Articles
+export default Articles;
