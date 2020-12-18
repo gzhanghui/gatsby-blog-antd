@@ -1,87 +1,90 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Home from '../pages/home';
-import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
-
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          // ...scale(1.5),
-          // marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    );
-  }
+import React, { useState, useEffect } from 'react'
+import { navigate } from 'gatsby'
+import { BackTop } from 'antd'
+import Storage from 'good-storage'
+import ProLayout, { DefaultFooter } from '@ant-design/pro-layout'
+import {
+  GithubOutlined,
+  ZhihuOutlined,
+  WeiboOutlined,
+  TwitterOutlined,
+  YuqueFilled,
+  VerticalAlignTopOutlined,
+} from '@ant-design/icons'
+import ModeIcon from './mode-icon'
+// createFromIconfontCN,
+// const IconFont = createFromIconfontCN({
+//   scriptUrl: '//at.alicdn.com/t/font_2256009_y24j58sfs4r.js',
+// })
+const Layout = ({ title, children }, props) => {
+  const [storage, setStorage] = useState(Storage)
+  const [theme, setTheme] = useState('light')
+  useEffect(() => {
+    setStorage(Storage)
+    setTheme(storage.get('theme-mode') || theme)
+  }, [])
   return (
-    <>
-      <ProLayout
-        layout={'top'}
-        navTheme={'light'}
-        fixedHeader={true}
-        footerRender={() => (
-          <DefaultFooter
-            links={[
-              { key: 'test', title: 'layout', href: 'www.alipay.com' },
-              { key: 'test2', title: 'layout2', href: 'www.alipay.com' },
-            ]}
-            copyright="这是一条测试文案"
+    <ProLayout
+      title={title}
+      headerHeight={60}
+      onMenuHeaderClick={() => {
+        navigate('/')
+      }}
+      layout={'top'}
+      navTheme={theme}
+      headerTheme={theme}
+      fixedHeader={true}
+      rightContentRender={() => (
+        <div className="header-right">
+          <ModeIcon
+            onThemeChange={theme => {
+              setTheme(theme)
+            }}
           />
-        )}
-      >
-        <Home />
-      </ProLayout>
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          // maxWidth: rhythm(24),
-          // padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  );
-};
+        </div>
+      )}
+      siderWidth={300}
+      footerRender={() => (
+        <DefaultFooter
+          links={[
+            {
+              key: 'ZhihuOutlined',
+              title: <ZhihuOutlined />,
+              href: 'www.alipay.com',
+            },
+            {
+              key: 'GithubOutlined',
+              title: <GithubOutlined />,
+              href: 'www.alipay.com',
+            },
+            {
+              key: 'WeiboOutlined',
+              title: <WeiboOutlined />,
+              href: 'www.alipay.com',
+            },
+            {
+              key: 'YuqueFilled',
+              title: <YuqueFilled />,
+              href: 'www.alipay.com',
+            },
+            {
+              key: 'TwitterOutlined',
+              title: <TwitterOutlined />,
+              href: 'www.alipay.com',
+            },
+          ]}
+          copyright="powered by Gatsbyjs"
+        />
+      )}
+    >
+      <React.Fragment>{children}</React.Fragment>
+      <BackTop style={{ right: '34px' }}>
+        <div className="back-top">
+          <VerticalAlignTopOutlined />
+        </div>
+      </BackTop>
+    </ProLayout>
+  )
+}
 
-export default Layout;
+export default Layout
