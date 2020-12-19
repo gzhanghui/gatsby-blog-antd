@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { Link, graphql } from 'gatsby'
-import { Row } from 'antd'
-import { GridContent } from '@ant-design/pro-layout'
 import SmoothScroll from 'smooth-scroll'
 import classnames from 'classnames'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
-  const { prev, next } = pageContext
+  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const { prev, next } = data
   const [scroll, setScroll] = useState(null)
   console.log(scroll)
   useEffect(async () => {
-    setScroll(new SmoothScroll('a[href*="#"]'))
+    setScroll(
+      new SmoothScroll('a[href*="#"]', {
+        header: '.ant-layout-header',
+      })
+    )
   }, [])
   return (
-    <Layout location={location}>
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
       <div
         className={classnames('post-main', {
           space0: location.pathname.startsWith(`/articles/`),
@@ -25,10 +33,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <div className="container">
           <div className="row ">
             <div className="col-md-9">
-              <SEO
-                title={post.frontmatter.title}
-                description={post.frontmatter.description || post.excerpt}
-              />
               <article
                 className="blog-post"
                 itemScope
@@ -60,14 +64,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   <li>
                     {prev && (
                       <Link to={prev.fields.permalink} rel="prev">
-                        ← {prev.frontmatter.title}
+                        ← {prev.frontmatter.title || prev.fields.permalink}
                       </Link>
                     )}
                   </li>
                   <li>
                     {next && (
                       <Link to={next.fields.permalink} rel="next">
-                        {next.frontmatter.title} →
+                        {next.frontmatter.title || next.fields.permalink} →
                       </Link>
                     )}
                   </li>
@@ -75,31 +79,60 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               </nav>
             </div>
             <div className="col-md-3">
-              <div
-                className="docs-sidebar hidden-print hidden-xs hidden-sm affix"
-                dangerouslySetInnerHTML={{
-                  __html: post.tableOfContents,
-                }}
-              ></div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: handleAnchor(post.tableOfContents),
-                }}
-              ></div>
+              <div className="docs-sidebar hidden-print hidden-xs hidden-sm affix">
+                <div
+                  className="toc"
+                  dangerouslySetInnerHTML={{
+                    __html: post.tableOfContents,
+                  }}
+                ></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <GridContent>
-        <Row className="post-container">
-          <div className="antd-pro-pages-account-settings-style-main">
-            <div className="antd-pro-pages-account-settings-style-right"></div>
-          </div>
-        </Row>
-      </GridContent>
     </Layout>
   )
 }
+
+export default BlogPostTemplate
+
+export const pageQuery = graphql`
+  query BlogPostBySlug($id: String!, $prevId: String, $nextId: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(id: { eq: $id }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      tableOfContents(pathToSlugField: "fields.permalink", absolute: false)
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
+      }
+    }
+    prev: markdownRemark(id: { eq: $prevId }) {
+      fields {
+        permalink
+      }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextId }) {
+      fields {
+        permalink
+      }
+      frontmatter {
+        title
+      }
+    }
+  }
+`
 
 function handleAnchor(str) {
   // const fragment = document.createElement('div')
@@ -112,19 +145,3 @@ function handleAnchor(str) {
     (item, text) => `<span onclick="alert('#${text}')">${text}</span>`
   )
 }
-
-export default BlogPostTemplate
-
-export const pageQuery = graphql`
-  query BlogPostBySlug {
-    markdownRemark {
-      html
-      tableOfContents(pathToSlugField: "fields.permalink", absolute: false)
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-  }
-`

@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import { LeftOutlined, RightOutlined } from "@ant-design/icons"
-import classnames from "classnames"
+import React from 'react'
+import { Link } from 'gatsby'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
+import classnames from 'classnames'
 const Pager = ({ pageContext }) => {
   const {
     previousPagePath,
@@ -17,11 +17,15 @@ const Pager = ({ pageContext }) => {
     <nav>
       <ul className="ant-pagination">
         <li
-          className={classnames("ant-pagination-prev", {
-            "ant-pagination-disabled": !previousPagePath,
+          className={classnames('ant-pagination-prev', {
+            'ant-pagination-disabled': !previousPagePath,
           })}
         >
-          <button class="ant-pagination-item-link" type="button" tabindex="-1">
+          <button
+            className="ant-pagination-item-link"
+            type="button"
+            tabIndex="-1"
+          >
             <Link
               to={previousPagePath}
               className="page-link"
@@ -34,8 +38,8 @@ const Pager = ({ pageContext }) => {
         {numPages.map(number => (
           <li
             key={number}
-            className={classnames("ant-pagination-item", {
-              "ant-pagination-item-active": number === pageNumber,
+            className={classnames('ant-pagination-item', {
+              'ant-pagination-item-active': number === pageNumber,
             })}
           >
             {number === 0 ? (
@@ -46,8 +50,8 @@ const Pager = ({ pageContext }) => {
           </li>
         ))}
         <li
-          className={classnames("ant-pagination-next", {
-            "ant-pagination-disabled": !nextPagePath,
+          className={classnames('ant-pagination-next', {
+            'ant-pagination-disabled': !nextPagePath,
           })}
         >
           <button className="ant-pagination-item-link">

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import { graphql, Link } from 'gatsby' // Link,
+import { graphql, Link } from 'gatsby'
 import { Card, Col, Row, Button } from 'antd'
 import { GridContent } from '@ant-design/pro-layout'
 import Bio from '../components/bio'
@@ -10,7 +10,6 @@ import AccountCenter from '../components/account-center'
 import '../common/less/common.less'
 import '../styles/index.less'
 
-// import "../styles/index.less"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const tags = JSON.parse(data.site.siteMetadata.tagList)
@@ -139,6 +138,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
+        id
         excerpt
         fields {
           permalink

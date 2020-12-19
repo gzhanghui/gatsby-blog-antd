@@ -30,6 +30,7 @@
     "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-tags": "^2.3.7",
     "gatsby-remark-autolink-headers": "^2.8.0",
+    "gatsby-remark-code-buttons": "^2.0.4",
     "gatsby-remark-copy-linked-files": "^2.4.0",
     "gatsby-remark-images": "^3.5.1",
     "gatsby-remark-prismjs": "^3.7.0",

@@ -6,23 +6,21 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve('./src/templates/blog-post.js')
   const blogArchive = path.resolve('src/templates/blog-archive.js')
-
   const result = await graphql(
     `
       {
         allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
-          edges {
-            node {
-              fields {
-                permalink
-                tags
-              }
-              frontmatter {
-                date
-                description
-                tags
-                title
-              }
+          nodes {
+            id
+            fields {
+              permalink
+              tags
+            }
+            frontmatter {
+              date
+              description
+              tags
+              title
             }
           }
         }
@@ -34,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
     console.log(result.errors)
     return
   }
-  const posts = get(result, 'data.allMarkdownRemark.edges')
+  const posts = get(result, 'data.allMarkdownRemark.nodes')
   paginate({
     createPage,
     items: posts,
@@ -42,14 +40,17 @@ exports.createPages = async ({ graphql, actions }) => {
     pathPrefix: '/posts',
     component: blogArchive,
   })
-  posts.forEach((post, index) => {
+
+  posts.forEach((node, index) => {
+    console.log(JSON.stringify(node))
     createPage({
-      path: post.node.fields.permalink,
+      path: node.fields.permalink,
       component: blogPost,
       context: {
-        permalink: post.node.fields.permalink,
-        prev: index === 0 ? null : posts[index - 1].node,
-        next: index === posts.length - 1 ? null : posts[index + 1].node,
+        id: node.id,
+        permalink: node.fields.permalink,
+        prevId: index === 0 ? null : posts[index - 1].id,
+        nextId: index === posts.length - 1 ? null : posts[index + 1].id,
       },
     })
   })

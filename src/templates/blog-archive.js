@@ -7,11 +7,11 @@ import Layout from '../components/layout'
 import Articles from '../components/post-item'
 
 const BlogArchive = ({ data, pageContext, location }) => {
-  const posts = get(data, 'allMarkdownRemark.edges')
-  const articles = posts.map(item => ({
-    ...item.node.frontmatter,
-    excerpt: item.node.excerpt,
-    fields: item.node.fields,
+  const posts = get(data, 'allMarkdownRemark.nodes')
+  const articles = posts.map(node => ({
+    ...node.frontmatter,
+    excerpt: node.excerpt,
+    fields: node.fields,
   }))
   return (
     <Layout location={location}>
@@ -32,18 +32,16 @@ export const pageQuery = graphql`
       skip: $skip
       limit: $limit
     ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            permalink
-            tags
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            description
-          }
+      nodes {
+        excerpt
+        fields {
+          permalink
+          tags
+        }
+        frontmatter {
+          date(formatString: "DD MMMM, YYYY")
+          title
+          description
         }
       }
     }

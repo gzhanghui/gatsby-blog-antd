@@ -1,11 +1,11 @@
-import React from "react"
-import { Link } from "gatsby"
-import { List, Tag } from "antd"
+import React from 'react'
+import { Link } from 'gatsby'
+import { List, Tag } from 'antd'
 import {
   LikeTwoTone,
   MessageOutlined,
   ClockCircleFilled,
-} from "@ant-design/icons"
+} from '@ant-design/icons'
 const Articles = props => {
   const { list } = props
   const IconText = ({ icon, text }) => (
@@ -15,8 +15,8 @@ const Articles = props => {
   )
   const title = item =>
     item.title ||
-    item.fields.permalink.split("/")[
-      item.fields.permalink.split("/").length - 2
+    item.fields.permalink.split('/')[
+      item.fields.permalink.split('/').length - 2
     ]
   return (
     <List
@@ -48,10 +48,7 @@ const Articles = props => {
         >
           <List.Item.Meta
             title={
-              <Link
-                className="listItemMetaTitle"
-                to={item.fields.permalink}
-              >
+              <Link className="listItemMetaTitle" to={item.fields.permalink}>
                 <span className="article-list-title">{title(item)} </span>
               </Link>
             }
