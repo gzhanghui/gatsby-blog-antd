@@ -2,6 +2,7 @@
 title: JavaScript深入之bind的模拟实现
 date: '2020-12-21'
 tags: ['javascript']
+category: 'javascript'
 ---
 
 

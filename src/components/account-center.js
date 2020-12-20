@@ -1,52 +1,26 @@
-import axios from 'axios'
 import {
   HomeOutlined,
   ContactsOutlined,
   ClusterOutlined,
+  createFromIconfontCN,
 } from '@ant-design/icons'
-import { Avatar, Card, Col, Divider, Row, Tag, message, Typography } from 'antd'
+
+import { Avatar, Card, Col, Divider, Row, Tag, Typography } from 'antd'
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { flattenDeep, groupBy } from 'lodash'
+import classnames from 'classnames'
+import { color } from '../common/js/config'
 import { currentUserInfo } from './_mock'
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_2280915_2eibodcue0v.js',
+})
 const { Paragraph } = Typography
-const TagList = ({ tags }) => {
-  return (
-    <div className="tags">
-      <div className="tagsTitle">标签</div>
-      {(tags || []).map(item => (
-        <Tag key={item.key}>{item.label}</Tag>
-      ))}
-    </div>
-  )
-}
-
 class AccountCenter extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      comments: [],
-    }
   }
-  componentDidMount() {
-    // this.getComments()
-  }
-  async getComments() {
-    try {
-      const res = await axios.get(
-        'https://api.uomg.com/api/comments.163?format=json'
-      )
-      if (res.data.code === 1) {
-        this.setState({
-          comments: res.data.data,
-        })
-      } else {
-        message.error(res.data.msg)
-      }
-    } catch (error) {
-      message.error('网络错误！')
-    }
-  }
+  componentDidMount() {}
   renderUserInfo = currentUser => (
     <div className="detail">
       <p>
@@ -98,8 +72,11 @@ class AccountCenter extends Component {
     const currentUser = currentUserInfo
     const dataLoading =
       currentUserLoading || !(currentUser && Object.keys(currentUser).length)
-    const arr = flattenDeep(this.props.data.tagList)
-    const tagGroup = groupBy(arr, val => val.fileName.replace(/.svg/, ''))
+    const { comments, tagList, categoryList } = this.props.data
+    const tag = flattenDeep(tagList)
+    const category = flattenDeep(categoryList)
+    const tagGroup = groupBy(tag, val => val)
+    const categoryGroup = groupBy(category, val => val)
     return (
       <Card
         bordered={false}
@@ -117,34 +94,39 @@ class AccountCenter extends Component {
             </div>
             {this.renderUserInfo(currentUser)}
             <Divider dashed />
-            <TagList tags={currentUser.tags || []} />
+            <div className="tags">
+              <div className="tagsTitle">标签</div>
+              {Object.keys(tagGroup).map(val => (
+                <Tag
+                  icon={<IconFont type={`icon-${val}`} />}
+                  color={color[val] || '#1890ff'}
+                  key={val}
+                  className={classnames({ js: val === 'javascript' })}
+                >
+                  <Link to={`/tags/${val}`}>
+                    {`${val}（${tagGroup[val].length}）`}
+                  </Link>
+                </Tag>
+              ))}
+            </div>
             <Divider style={{ marginTop: 16 }} dashed />
-
             <div className="team">
-              <div className="teamTitle">标签</div>
+              <div className="teamTitle">分类</div>
               <Row gutter={36}>
-                {Object.keys(tagGroup).map(val => (
+                {Object.keys(categoryGroup).map(val => (
                   <Col key={val} lg={24} xl={12}>
-                    <Link to={`/tags/${val}`}>
-                      {tagGroup[val][0].path ? (
-                        <Avatar
-                          size="small"
-                          src={`data:image/svg+xml;base64,${tagGroup[val][0].path}`}
-                        />
-                      ) : (
-                        ''
-                      )}
-                      {`${val}  （${tagGroup[val].length}）`}
+                    <Link to={`/category/${val}`}>
+                      <Avatar
+                        size="small"
+                        shape="square"
+                        style={{ backgroundColor: color[val] }}
+                        icon={<IconFont type={`icon-${val}`} />}
+                      />
+                      <span>{`${val}  （${categoryGroup[val].length}）`}</span>
                     </Link>
                   </Col>
                 ))}
               </Row>
-            </div>
-            <Divider style={{ marginTop: 16 }} dashed />
-            <div className="comments">
-              <Paragraph copyable={{ tooltips: false }}>
-                {this.state.comments.content}
-              </Paragraph>
             </div>
           </div>
         )}

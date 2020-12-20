@@ -1,42 +1,54 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
+import axios from 'axios'
 import { graphql, Link } from 'gatsby'
-import { Card, Col, Row, Button } from 'antd'
+import { isEmpty } from 'lodash'
+import { Card, Col, Row, Button, message } from 'antd'
 import { GridContent } from '@ant-design/pro-layout'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Articles from '../components/post-item'
 import AccountCenter from '../components/account-center'
+import Player from '../components/player'
 import '../common/less/common.less'
 import '../styles/index.less'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const tags = JSON.parse(data.site.siteMetadata.tagList)
-  let posts = data.allMarkdownRemark.nodes
-  posts = posts.slice(0, 10)
-  const articles = posts.map(item => ({
+  const posts = data.allMarkdownRemark.nodes
+  const articles = posts.slice(0, 10).map(item => ({
     ...item.frontmatter,
     excerpt: item.excerpt,
     fields: item.fields,
   }))
-  const tagList = articles
+  const tagList = posts
     .filter(item => !!item.fields.tags)
-    .map(item => {
-      const tag = item.fields.tags
-      const arr = []
-      tag.forEach(t => {
-        const res = tags.find(n => n.fileName === `${t}.svg`)
-        if (res) {
-          arr.push(res)
-        } else {
-          arr.push(t)
-        }
-      })
-      return arr
-    })
-
+    .map(item => item.fields.tags)
+  const categoryList = posts
+    .filter(item => !!item.fields.category)
+    .map(item => item.fields.category)
   const [tabKey, setTabKey] = useState('articles')
+  const [comments, setComments] = useState({})
+  useEffect(() => {
+    if (isEmpty(comments)) {
+      getComments()
+    }
+  }, [])
+  async function getComments() {
+    try {
+      const res = await axios.get(
+        'https://api.uomg.com/api/comments.163?format=json'
+      )
+      if (res.data.code === 1) {
+        setComments(res.data.data)
+      } else {
+        message.error(res.data.msg)
+      }
+    } catch (error) {
+      message.error('网络错误！')
+    }
+  }
+
   const operationTabList = articleTotal => {
     return [
       {
@@ -105,7 +117,13 @@ const BlogIndex = ({ data, location }) => {
       <GridContent>
         <Row gutter={24}>
           <Col lg={7} md={24}>
-            <AccountCenter data={{ current: {}, tagList: tagList }} />
+            <AccountCenter data={{ current: {}, tagList, categoryList }} />
+            <Player
+              comments={comments}
+              onRefresh={() => {
+                getComments()
+              }}
+            />
           </Col>
           <Col lg={17} md={24}>
             <Card
@@ -143,6 +161,7 @@ export const pageQuery = graphql`
         fields {
           permalink
           tags
+          category
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")

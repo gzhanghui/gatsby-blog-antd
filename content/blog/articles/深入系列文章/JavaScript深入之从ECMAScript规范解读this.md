@@ -1,3 +1,9 @@
+---
+title: JavaScript深入之new的模拟实现
+date: '2020-12-21'
+tags: ['javascript']
+category: '随笔'
+---
 # JavaScript深入之从ECMAScript规范解读this
 
 >JavaScript深入系列第六篇，本篇我们追根溯源，从ECMAScript5规范解读this在函数调用时到底是如何确定的。

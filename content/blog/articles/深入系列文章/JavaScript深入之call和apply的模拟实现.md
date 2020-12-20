@@ -2,6 +2,7 @@
 title: JavaScript深入之call和apply的模拟实现
 date: '2020-12-21'
 tags: ['javascript']
+category: 'vue'
 ---
 
 

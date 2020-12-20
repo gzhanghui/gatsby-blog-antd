@@ -9,17 +9,19 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           nodes {
             id
             fields {
               permalink
               tags
+              category
             }
             frontmatter {
               date
               description
               tags
+              category
               title
             }
           }
@@ -42,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   posts.forEach((node, index) => {
-    console.log(JSON.stringify(node))
     createPage({
       path: node.fields.permalink,
       component: blogPost,
@@ -98,6 +99,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Fields {
+      category:String
       permalink: String
     }
   `)

@@ -2,15 +2,15 @@ const fs = require(`fs`)
 const path = require(`path`)
 const { getLessVars } = require('antd-theme-generator')
 const tagIcons = fs.readdirSync('./src/common/icons')
-const tagInfo = tagIcons.map(value => {
-  return {
-    path: Buffer.from(
-      fs.readFileSync(`${__dirname}/src/common/icons/${value}`),
-      'binary'
-    ).toString('base64'),
-    fileName: value,
-  }
-})
+// const tagInfo = tagIcons.map(value => {
+//   return {
+//     path: Buffer.from(
+//       fs.readFileSync(`${__dirname}/src/common/icons/${value}`),
+//       'binary'
+//     ).toString('base64'),
+//     fileName: value,
+//   }
+// })
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -18,7 +18,7 @@ module.exports = {
       name: `Kyle Mathews`,
       summary: `who lives and works in San Francisco building useful things.`,
     },
-    tagList: JSON.stringify(tagInfo),
+    // tagList: JSON.stringify(tagInfo),
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
@@ -176,6 +176,12 @@ module.exports = {
             path.join(__dirname, './src/common/less/variables.less')
           ),
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-categories',
+      options: {
+        templatePath: `${__dirname}/src/templates/category.js`,
       },
     },
     {

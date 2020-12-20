@@ -1,3 +1,11 @@
+@import '../common/less/variables.less';
+.js,
+.javascript {
+  color: rgba(0, 0, 0, 0.85);
+  a {
+    color: rgba(0, 0, 0, 0.75) !important;
+  }
+}
 .avatarHolder {
   margin-bottom: 24px;
   text-align: center;
@@ -64,7 +72,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-all;
+    color: @text-color;
     transition: color 0.3s;
+    &:hover,
+    &.current {
+      color: @primary-color;
+      border-color: @primary-color;
+    }
   }
 }
 

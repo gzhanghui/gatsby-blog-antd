@@ -1,0 +1,236 @@
+@import '../common/less/variables.less';
+.player {
+  height: 140px;
+  //   max-width: 420px;
+  position: relative;
+  background: #000;
+  background-size: cover;
+  background-position: 100% 100%;
+  overflow: hidden;
+  color: #ffffff;
+  .player-content,
+  .blur-bg-mask,
+  .blur-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .blur-bg {
+    z-index: 9;
+    filter: blur(45px);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .blur-bg-mask {
+    background-color: rgba(0, 0, 0, 0.35);
+    opacity: 0.6;
+  }
+  .player-content {
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+
+    .avatar-con {
+      width: 90px;
+      height: 90px;
+      display: inline-block;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 24px 24px 24px 12px;
+
+      .avatar-img {
+        position: absolute;
+      }
+    }
+
+    .player-right {
+      flex: 1;
+    }
+    .song-name {
+      font-size: 16px;
+      padding-left: 6px;
+    }
+    .singer-name {
+      font-size: 13px;
+      text-align: right;
+      margin-bottom: 2px;
+      margin-right: 54px;
+    }
+    .progress {
+      position: relative;
+      padding-right: 40px;
+      .ant-slider {
+        .ant-slider-step {
+          background-color: @white;
+        }
+        .ant-slider-track {
+          background-color: @primary-color !important;
+          z-index: 2;
+        }
+        .ant-slider-handle {
+          z-index: 3;
+        }
+      }
+    }
+    .progress-control {
+      flex: 1;
+      .ant-slider-rail,
+      .ant-slider-track,
+      .ant-slider-step {
+        height: 2px;
+      }
+    }
+    .volume-control {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      bottom: -15px;
+      .volume-control-inner {
+        height: 48px;
+        position: relative;
+        bottom: 6px;
+        opacity: 0;
+        // display: none;
+        transition: all 0.3s;
+      }
+      .volume-button {
+        padding-top: 0;
+        display: inline-block;
+        height: 40px;
+        line-height: 42px;
+        width: 32px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        &.is-muted {
+          left: 8px;
+        }
+      }
+      &:hover {
+        .volume-control-inner {
+          display: block;
+          opacity: 1;
+        }
+      }
+      .ant-slider-rail,
+      .ant-slider-track,
+      .ant-slider-step {
+        width: 2px;
+      }
+      .ant-slider-mark {
+        display: none;
+      }
+    }
+  }
+  .sb-soundplayer-timer {
+    font-size: 12px;
+    position: absolute;
+    bottom: 16px;
+    left: 6px;
+  }
+
+  .sb-soundplayer-btn {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -14px 0 0 -14px;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+  }
+  .sb-soundplayer-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+.toolbar {
+  padding-top: 4px;
+  padding-left: 6px;
+  svg {
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+}
+.like {
+  color: #ffffff;
+  &.liked {
+    color: #f5222d;
+  }
+}
+
+@keyframes likes {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.rotate {
+  animation: 9.5s linear 0s normal none infinite rotate;
+}
+.liked {
+  animation-name: likes;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+}
+.player-wrap {
+  background-color: @white;
+}
+.comments {
+  display: flex;
+  padding: 12px;
+  .comments-content {
+    flex: 1;
+  }
+  .nickname {
+    padding: 8px 8px 0 8px;
+    display: inline-block;
+  }
+  .content-inner {
+    padding: 8px 12px 12px 8px;
+  }
+  //   .avatar {
+  //     padding: 12px 0;
+  //   }
+  //   .nickname {
+  //     padding-left: 8px;
+  //   }
+  //   p {
+  //   }
+}

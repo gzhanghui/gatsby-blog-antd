@@ -12,10 +12,7 @@ import {
   VerticalAlignTopOutlined,
 } from '@ant-design/icons'
 import ModeIcon from './mode-icon'
-// createFromIconfontCN,
-// const IconFont = createFromIconfontCN({
-//   scriptUrl: '//at.alicdn.com/t/font_2256009_y24j58sfs4r.js',
-// })
+
 const Layout = ({ title, children }, props) => {
   const [storage, setStorage] = useState(Storage)
   const [theme, setTheme] = useState('light')
