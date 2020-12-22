@@ -1,13 +1,12 @@
 @import '../common/less/variables.less';
 .player {
   height: 140px;
-  //   max-width: 420px;
   position: relative;
   background: #000;
   background-size: cover;
   background-position: 100% 100%;
   overflow: hidden;
-  color: #ffffff;
+  color: @text-color;
   .player-content,
   .blur-bg-mask,
   .blur-bg {
@@ -47,6 +46,8 @@
 
       .avatar-img {
         position: absolute;
+        left: 0;
+        top: 0;
       }
     }
 
@@ -210,7 +211,7 @@
   animation-duration: 0.2s;
 }
 .player-wrap {
-  background-color: @white;
+  background-color: @component-background;
 }
 .comments {
   display: flex;
@@ -225,12 +226,4 @@
   .content-inner {
     padding: 8px 12px 12px 8px;
   }
-  //   .avatar {
-  //     padding: 12px 0;
-  //   }
-  //   .nickname {
-  //     padding-left: 8px;
-  //   }
-  //   p {
-  //   }
 }

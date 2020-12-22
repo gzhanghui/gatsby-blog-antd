@@ -11,9 +11,7 @@ import {
 } from '@ant-design/icons'
 import { Slider, Avatar, Typography } from 'antd'
 const { VolumeIconSVG, VolumeIconMuteSVG, VolumeIconLoudSVG } = Icons
-// some track meta information
 const AWSSoundPlayer = withCustomAudio(props => {
-  console.log(props.comments)
   const {
     picurl,
     avatarurl,
@@ -32,6 +30,7 @@ const AWSSoundPlayer = withCustomAudio(props => {
             <img
               src={picurl}
               width={90}
+              alt="avatar"
               className={classnames('avatar-img', {
                 rotate: playing,
               })}
@@ -73,7 +72,7 @@ const AWSSoundPlayer = withCustomAudio(props => {
                     }}
                   />
                 </div>
-                <span
+                <button
                   className={classnames('volume-button', {
                     'is-muted': isMuted,
                   })}
@@ -88,11 +87,11 @@ const AWSSoundPlayer = withCustomAudio(props => {
                     </>
                   )}
                   {!isMuted && <VolumeIconLoudSVG />}
-                </span>
+                </button>
               </div>
             </div>
             <div className="toolbar">
-              <span
+              <button
                 onClick={() => {
                   if (playing) {
                     soundCloudAudio.pause()
@@ -103,8 +102,8 @@ const AWSSoundPlayer = withCustomAudio(props => {
               >
                 {!playing && <PlayCircleOutlined />}
                 {playing && <PauseCircleOutlined />}
-              </span>
-              <span
+              </button>
+              <button
                 onClick={() => {
                   setLike(!like)
                 }}
@@ -115,7 +114,7 @@ const AWSSoundPlayer = withCustomAudio(props => {
                     className={classnames('like', { liked: like })}
                   />
                 )}
-              </span>
+              </button>
               <RightCircleOutlined
                 onClick={() => {
                   props.onRefresh()

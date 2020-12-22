@@ -52,10 +52,12 @@ const ModeIcon = props => {
     console.log(themeMode, themeColor)
     setMode(themeMode)
     setColor(themeColor)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
     changeTheme(storage, mode, color)
-  }, [mode, color])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Menu

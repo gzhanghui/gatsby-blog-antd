@@ -5,7 +5,7 @@ import {
   createFromIconfontCN,
 } from '@ant-design/icons'
 
-import { Avatar, Card, Col, Divider, Row, Tag, Typography } from 'antd'
+import { Avatar, Card, Col, Divider, Row, Tag } from 'antd'
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { flattenDeep, groupBy } from 'lodash'
@@ -15,10 +15,10 @@ import { currentUserInfo } from './_mock'
 const IconFont = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_2280915_2eibodcue0v.js',
 })
-const { Paragraph } = Typography
 class AccountCenter extends Component {
   constructor(props) {
     super(props)
+    this.state = {}
   }
   componentDidMount() {}
   renderUserInfo = currentUser => (
@@ -72,7 +72,7 @@ class AccountCenter extends Component {
     const currentUser = currentUserInfo
     const dataLoading =
       currentUserLoading || !(currentUser && Object.keys(currentUser).length)
-    const { comments, tagList, categoryList } = this.props.data
+    const { tagList, categoryList } = this.props.data
     const tag = flattenDeep(tagList)
     const category = flattenDeep(categoryList)
     const tagGroup = groupBy(tag, val => val)
@@ -114,7 +114,7 @@ class AccountCenter extends Component {
               <div className="teamTitle">分类</div>
               <Row gutter={36}>
                 {Object.keys(categoryGroup).map(val => (
-                  <Col key={val} lg={24} xl={12}>
+                  <Col key={val} lg={24} md={24} xl={14}>
                     <Link to={`/category/${val}`}>
                       <Avatar
                         size="small"

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
-const Pager = ({ pageContext }) => {
+const Pagination = ({ pageContext }) => {
   const {
     previousPagePath,
     nextPagePath,
@@ -69,4 +69,4 @@ const Pager = ({ pageContext }) => {
   )
 }
 
-export default Pager
+export default Pagination

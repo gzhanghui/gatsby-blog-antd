@@ -12,12 +12,19 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { prev, next } = data
   const [scroll, setScroll] = useState(null)
   console.log(scroll)
-  useEffect(async () => {
-    setScroll(
-      new SmoothScroll('a[href*="#"]', {
-        header: '.ant-layout-header',
-      })
-    )
+  useEffect(() => {
+    async function initScrol() {
+      try {
+        setScroll(
+          new SmoothScroll('a[href*="#"]', {
+            header: '.ant-layout-header',
+          })
+        )
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    initScrol()
   }, [])
   return (
     <Layout location={location} title={siteTitle}>
@@ -133,7 +140,7 @@ export const pageQuery = graphql`
     }
   }
 `
-
+// eslint-disable-next-line
 function handleAnchor(str) {
   // const fragment = document.createElement('div')
   // fragment.innerHTML = str

@@ -33,6 +33,7 @@ const BlogIndex = ({ data, location }) => {
     if (isEmpty(comments)) {
       getComments()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   async function getComments() {
     try {
@@ -121,7 +122,7 @@ const BlogIndex = ({ data, location }) => {
             <Player
               comments={comments}
               onRefresh={() => {
-                getComments()
+                // getComments()
               }}
             />
           </Col>

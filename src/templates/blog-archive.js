@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { get } from 'lodash'
 import { Card } from 'antd'
-import Pager from '../components/pager'
+import Pagination from '../components/pagination'
 import Layout from '../components/layout'
 import Articles from '../components/post-item'
 
@@ -17,7 +17,7 @@ const BlogArchive = ({ data, pageContext, location }) => {
     <Layout location={location}>
       <Card bordered={false}>
         <Articles list={articles} />
-        <Pager pageContext={pageContext} />
+        <Pagination pageContext={pageContext} />
       </Card>
     </Layout>
   )

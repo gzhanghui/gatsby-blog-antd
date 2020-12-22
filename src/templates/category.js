@@ -2,12 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import PostsList from '../components/post-item'
+// import PostsList from '../components/post-item'
 
 const CategoryTemplate = ({ location, pageContext, data }) => {
   //   const { category } = pageContext
+  console.log(data)
   return (
     <Layout>
+      <SEO title={`Posts in tag `} />
       <div className="category-container"></div>
     </Layout>
   )

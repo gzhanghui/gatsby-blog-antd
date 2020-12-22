@@ -13,12 +13,13 @@ import {
 } from '@ant-design/icons'
 import ModeIcon from './mode-icon'
 
-const Layout = ({ title, children }, props) => {
+const Layout = ({ title, children }) => {
   const [storage, setStorage] = useState(Storage)
   const [theme, setTheme] = useState('light')
   useEffect(() => {
-    setStorage(Storage)
-    setTheme(storage.get('theme-mode') || theme)
+    setStorage(() => Storage)
+    setTheme(() => storage.get('theme-mode') || theme)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <ProLayout

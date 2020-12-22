@@ -21,7 +21,7 @@ const Articles = props => {
   return (
     <List
       size="large"
-      className="articleList"
+      className="article-list"
       rowKey="title"
       itemLayout="vertical"
       dataSource={list}
@@ -62,7 +62,7 @@ const Articles = props => {
               </div>
             }
           />
-          <div className="listContent">
+          <div className="list-content">
             <p
               className="description"
               dangerouslySetInnerHTML={{
