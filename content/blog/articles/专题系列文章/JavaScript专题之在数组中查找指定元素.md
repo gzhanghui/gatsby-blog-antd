@@ -1,3 +1,9 @@
+---
+title: underscore在数组中查找指定元素
+date: '2020-12-27'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之学underscore在数组中查找指定元素
 
 ## 前言

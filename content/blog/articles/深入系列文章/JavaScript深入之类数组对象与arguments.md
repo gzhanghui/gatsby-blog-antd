@@ -1,3 +1,9 @@
+---
+title: 类数组对象与arguments
+date: '2020-10-12'
+tags: ['javascript']
+category: javascript1深入系列文章
+---
 # JavaScript深入之类数组对象与arguments
 
 >JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点

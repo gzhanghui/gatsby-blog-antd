@@ -1,3 +1,9 @@
+---
+title: 执行上下文栈
+date: '2020-10-11'
+tags: ['javascript']
+category: javascript1深入系列文章
+---
 # JavaScript深入之执行上下文栈
 
 >JavaScript深入系列第三篇，讲解执行上下文栈的是如何执行的，也回答了第二篇中的略难的思考题。

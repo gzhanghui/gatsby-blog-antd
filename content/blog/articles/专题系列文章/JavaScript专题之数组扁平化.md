@@ -1,3 +1,9 @@
+---
+title: 数组扁平化
+date: '2020-11-01'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之数组扁平化
 
 ## 扁平化

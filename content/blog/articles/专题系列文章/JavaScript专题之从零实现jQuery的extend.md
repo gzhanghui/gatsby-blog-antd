@@ -1,3 +1,10 @@
+---
+title: 零实现jQuery的extend
+date: '2020-12-22'
+tags: ['webpack','react']
+category: javascript专题系列文章
+---
+
 # JavaScript专题之从零实现jQuery的extend
 
 ## 前言

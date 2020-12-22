@@ -1,8 +1,8 @@
 ---
-title: JavaScript深入之new的模拟实现
-date: '2020-12-21'
+title: new的模拟实现
+date: '2020-10-03'
 tags: ['javascript']
-category: 杂谈
+category: javascript1深入系列文章
 ---
 
 # JavaScript深入之new的模拟实现

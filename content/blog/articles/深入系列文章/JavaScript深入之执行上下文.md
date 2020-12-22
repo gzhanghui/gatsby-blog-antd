@@ -1,3 +1,9 @@
+---
+title: 执行上下文
+date: '2020-10-10'
+tags: ['javascript']
+category: javascript1深入系列文章
+---
 # JavaScript深入之执行上下文
 
 >JavaScript深入系列第七篇，结合之前所讲的四篇文章，以权威指南的demo为例，具体讲解当函数执行的时候，执行上下文栈、变量对象、作用域链是如何变化的。

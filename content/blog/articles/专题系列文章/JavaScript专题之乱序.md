@@ -1,9 +1,14 @@
+---
+title: JavaScript专题之乱序
+date: '2020-12-21'
+tags: ['javascript','vue']
+category: javascript专题系列文章
+---
 # JavaScript专题之乱序
 
 ## 乱序
 
 乱序的意思就是将数组打乱。
-
 嗯，没有了，直接看代码吧。
 
 ## Math.random

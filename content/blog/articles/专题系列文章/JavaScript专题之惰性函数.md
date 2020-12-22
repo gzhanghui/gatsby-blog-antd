@@ -1,3 +1,9 @@
+---
+title: 惰性函数
+date: '2020-12-30'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之惰性函数
 
 ## 需求

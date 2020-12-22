@@ -2,10 +2,25 @@ const path = require(`path`)
 const { getLessVars } = require('antd-theme-generator')
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Blof for Antd`,
+    title: `Gatsby Blog for Antd`,
     author: {
-      name: `zhanghui`,
+      name: `Serati Ma`,
+      signature: `海纳百川，有容乃大`,
+      email: 'antdesign@alipay.com',
       summary: `一个离开谷歌什么都不会的主~`,
+      avatar: `https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png`,
+      country: 'China',
+      geographic: {
+        province: {
+          label: '浙江省',
+          key: '330000',
+        },
+        city: {
+          label: '杭州市',
+          key: '330100',
+        },
+      },
+      address: '西湖区工专路 77 号',
     },
     description: `Gatsby 是一个基于 React 的免费、开源框架，用于帮助 开发者构建运行速度极快的 网站 和 应用程序`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,

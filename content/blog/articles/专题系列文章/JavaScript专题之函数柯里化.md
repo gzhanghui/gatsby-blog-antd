@@ -1,3 +1,9 @@
+---
+title: 柯里化
+date: '2020-12-24'
+tags: ['html']
+category: javascript专题系列文章
+---
 # JavaScript专题之函数柯里化
 
 ## 定义

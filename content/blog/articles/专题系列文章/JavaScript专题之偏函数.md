@@ -1,3 +1,9 @@
+---
+title: 偏函数
+date: '2020-12-23'
+tags: ['css']
+category: javascript专题系列文章
+---
 # JavaScript专题之偏函数
 
 ## 定义

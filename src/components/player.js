@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Divider } from 'antd'
 import { PlayButton, Timer, Icons } from 'react-soundplayer/components'
 import { withCustomAudio } from 'react-soundplayer/addons'
 import classnames from 'classnames'
@@ -23,15 +24,15 @@ const AWSSoundPlayer = withCustomAudio(props => {
   const { soundCloudAudio, playing, isMuted } = props
   const [like, setLike] = useState(false)
   return (
-    <div className="player-wrap">
+    <div className="cloud-music-wrap">
       <div className="player">
         <div className="player-content">
-          <div className="avatar-con">
+          <div className="player-left">
             <img
               src={picurl}
               width={90}
               alt="avatar"
-              className={classnames('avatar-img', {
+              className={classnames('song-avatar', {
                 rotate: playing,
               })}
             />
@@ -41,7 +42,6 @@ const AWSSoundPlayer = withCustomAudio(props => {
             <h3 className="song-name">{name}</h3>
             <p className="singer-name">{artistsname}</p>
             <div className="progress">
-              {/* <Progress {...props} /> */}
               <div className="progress-control">
                 <Timer {...props} />
                 <Slider
@@ -115,27 +115,23 @@ const AWSSoundPlayer = withCustomAudio(props => {
                   />
                 )}
               </button>
-              <RightCircleOutlined
+              <button
                 onClick={() => {
                   props.onRefresh()
                 }}
-              />
+              >
+                <RightCircleOutlined />
+              </button>
             </div>
           </div>
         </div>
-        <div className="blur-bg-mask"></div>
-        <div
-          className="blur-bg"
-          style={{
-            backgroundImage: `url(${picurl})`,
-          }}
-        ></div>
       </div>
-      <div className="comments">
+      <Divider dashed style={{ margin: '4px 0 ' }} />
+      <div className="cloud-music-comments">
         <Avatar src={avatarurl} />
-        <div className="comments-content">
+        <div className="cloud-music-content">
           <span className="nickname">{nickname}</span>
-          <Typography.Paragraph className="content-inner" copyable>
+          <Typography.Paragraph className="cloud-music-text" copyable>
             {content}
           </Typography.Paragraph>
         </div>

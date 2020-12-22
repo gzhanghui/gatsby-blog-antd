@@ -1,3 +1,9 @@
+---
+title: 从原型到原型链
+date: '2020-10-05'
+tags: ['javascript']
+category: javascript1深入系列文章
+---
 # JavaScript深入之从原型到原型链
 
 >JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。

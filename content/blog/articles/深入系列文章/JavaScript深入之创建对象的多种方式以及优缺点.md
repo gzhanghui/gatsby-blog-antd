@@ -1,7 +1,8 @@
 ---
-title: JavaScript深入之变量对象
-date: '2020-12-21'
-tags: ['webpack','react']
+title: 创建对象的多种方式以及优缺点
+date: '2020-10-07'
+tags: ['javascript']
+category: javascript1深入系列文章
 ---
 
 # JavaScript深入之创建对象的多种方式以及优缺点

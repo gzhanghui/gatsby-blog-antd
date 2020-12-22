@@ -3,24 +3,11 @@ import classnames from 'classnames'
 import { isEmpty, isEqual } from 'lodash'
 import { message, Menu } from 'antd'
 import Storage from 'good-storage'
+import { SettingOutlined, CheckOutlined } from '@ant-design/icons'
 import darkVars from '../theme/dark.json'
 import lightVars from '../theme/light.json'
-import {
-  SettingOutlined,
-  CheckOutlined,
-  GithubOutlined,
-} from '@ant-design/icons'
+import { colorPalette } from '../common/js/config'
 
-const colorPalette = [
-  { label: '薄暮', value: '#f5222d', name: 'Dust Red' },
-  { label: '火山', value: '#fa541c', name: 'Volcano' },
-  { label: '日暮', value: '#fa8c16', name: 'Sunset Orange' },
-  { label: '极光绿', value: '#52c41a', name: 'Polar Green' },
-  { label: '明青', value: '#13c2c2', name: 'Cyan' },
-  { label: '拂晓蓝', value: '#1890ff', name: 'Daybreak Blue' },
-  { label: '极客蓝', value: '#2f54eb', name: 'Geek Blue' },
-  { label: '酱紫', value: '#722ed1', name: 'Golden Purple' },
-]
 const changeTheme = (storage, mode, color, callback) => {
   const vars = mode === 'light' ? lightVars : darkVars
   const theme = { ...vars, ...color }
@@ -49,7 +36,6 @@ const ModeIcon = props => {
     const themeColor = isEmpty(storage.get('theme-color'))
       ? color
       : storage.get('theme-color')
-    console.log(themeMode, themeColor)
     setMode(themeMode)
     setColor(themeColor)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +43,7 @@ const ModeIcon = props => {
   useEffect(() => {
     changeTheme(storage, mode, color)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [mode, color])
 
   return (
     <Menu
@@ -98,9 +84,6 @@ const ModeIcon = props => {
           </Menu.Item>
         ))}
       </Menu.SubMenu>
-      <Menu.Item>
-        <GithubOutlined />
-      </Menu.Item>
     </Menu>
   )
 }

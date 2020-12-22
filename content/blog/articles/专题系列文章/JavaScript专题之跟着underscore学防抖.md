@@ -1,3 +1,9 @@
+---
+title: 跟着underscore学防抖
+date: '2020-11-07'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之跟着underscore学防抖
 
 ## 前言

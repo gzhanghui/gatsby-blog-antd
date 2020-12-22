@@ -1,7 +1,8 @@
 ---
-title: JavaScript深入之变量对象
-date: '2020-12-21'
-tags: ['webpack','vue']
+title: 参数按值传递
+date: '2020-10-08'
+tags: ['javascript']
+category: javascript1深入系列文章
 ---
 
 # JavaScript深入之参数按值传递

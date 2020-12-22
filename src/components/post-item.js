@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { List, Tag } from 'antd'
 import {
-  LikeTwoTone,
+  LikeFilled,
   MessageOutlined,
   ClockCircleFilled,
 } from '@ant-design/icons'
@@ -29,11 +29,7 @@ const Articles = props => {
         <List.Item
           key={item.id}
           actions={[
-            <IconText
-              key="like"
-              icon={<LikeTwoTone />}
-              text={item.like || 0}
-            />,
+            <IconText key="like" icon={<LikeFilled />} text={item.like || 0} />,
             <IconText
               key="message"
               icon={<MessageOutlined />}

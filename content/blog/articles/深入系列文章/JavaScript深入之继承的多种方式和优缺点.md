@@ -1,3 +1,10 @@
+---
+title: 继承的多种方式和优缺点
+date: '2020-10-13'
+tags: ['javascript']
+category: javascript1深入系列文章
+---
+
 # JavaScript深入之继承的多种方式和优缺点
 
 > JavaScript深入系列第十五篇，讲解JavaScript各种继承方式和优缺点。

@@ -1,10 +1,10 @@
-
 ---
-title: JavaScript深入之变量对象
-date: '2020-12-21'
+title: 变量对象
+date: '2020-10-09'
 tags: ['javascript']
-
+category: javascript1深入系列文章
 ---
+
 # JavaScript深入之变量对象
 
 >JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！

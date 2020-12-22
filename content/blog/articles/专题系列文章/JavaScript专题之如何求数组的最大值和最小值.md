@@ -1,3 +1,9 @@
+---
+title: 如何求数组的最大值和最小值
+date: '2020-12-29'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之如何求数组的最大值和最小值
 
 ## 前言

@@ -14,3 +14,13 @@ export const color = {
   gatsby: '#663399',
   angular: '#E53935',
 }
+export const colorPalette = [
+  { label: '薄暮', value: '#f5222d', name: 'Dust Red' },
+  { label: '火山', value: '#fa541c', name: 'Volcano' },
+  { label: '日暮', value: '#fa8c16', name: 'Sunset Orange' },
+  { label: '极光绿', value: '#52c41a', name: 'Polar Green' },
+  { label: '明青', value: '#13c2c2', name: 'Cyan' },
+  { label: '拂晓蓝', value: '#1890ff', name: 'Daybreak Blue' },
+  { label: '极客蓝', value: '#2f54eb', name: 'Geek Blue' },
+  { label: '酱紫', value: '#722ed1', name: 'Golden Purple' },
+]

@@ -1,3 +1,9 @@
+---
+title: 函数组合
+date: '2020-12-25'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之函数组合
 
 ## 需求

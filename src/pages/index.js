@@ -14,7 +14,8 @@ import '../common/less/common.less'
 import '../styles/index.less'
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const { siteMetadata } = data.site
+  const siteTitle = siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const articles = posts.slice(0, 10).map(item => ({
     ...item.frontmatter,
@@ -118,11 +119,11 @@ const BlogIndex = ({ data, location }) => {
       <GridContent>
         <Row gutter={24}>
           <Col lg={7} md={24}>
-            <AccountCenter data={{ current: {}, tagList, categoryList }} />
+            <AccountCenter data={{ siteMetadata, tagList, categoryList }} />
             <Player
               comments={comments}
               onRefresh={() => {
-                // getComments()
+                getComments()
               }}
             />
           </Col>
@@ -152,7 +153,28 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        tagList
+        author {
+          name
+          summary
+          country
+          signature
+          avatar
+          address
+          email
+          geographic {
+            province {
+              label
+            }
+            city {
+              label
+            }
+          }
+        }
+        description
+        siteUrl
+        social {
+          twitter
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

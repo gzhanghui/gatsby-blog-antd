@@ -1,6 +1,5 @@
 // Highlighting for code blocks
 const path = require('path')
-require('antd/dist/antd.less')
 require('./src/common/less/bootstrap.less')
 require('prism-themes/themes/prism-vsc-dark-plus.css')
 // eslint-disable-next-line

@@ -1,3 +1,9 @@
+---
+title: 函数记忆
+date: '2020-12-26'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript 专题之函数记忆
 
 ## 定义

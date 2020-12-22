@@ -1,8 +1,8 @@
 ---
-title: JavaScript深入之new的模拟实现
-date: '2020-12-21'
+title: ECMAScript规范解读this
+date: '2020-10-04'
 tags: ['javascript']
-category: '随笔'
+category: javascript1深入系列文章
 ---
 # JavaScript深入之从ECMAScript规范解读this
 

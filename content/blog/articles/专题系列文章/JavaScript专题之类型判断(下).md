@@ -1,3 +1,9 @@
+---
+title: 类型判断(下)
+date: '2020-11-04'
+tags: ['javascript']
+category: javascript专题系列文章
+---
 # JavaScript专题之类型判断(下)
 
 ## 前言

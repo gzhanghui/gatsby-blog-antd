@@ -1,7 +1,8 @@
 ---
 title: JavaScript深入之闭包
-date: '2020-12-21'
+date: '2020-10-15'
 tags: ['javascript']
+category: javascript1深入系列文章
 ---
 
 # JavaScript深入之闭包
